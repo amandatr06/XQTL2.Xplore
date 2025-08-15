@@ -54,7 +54,7 @@ ls("package:XQTL2.Xplore")
 # Check available data
 data(package = "XQTL2.Xplore")
 
-# Load example data
+# Load and examine example data
 data(zinc_hanson_pseudoscan)
 data(zinc_hanson_means)
 
@@ -62,6 +62,35 @@ data(zinc_hanson_means)
 head(zinc_hanson_pseudoscan)
 dim(zinc_hanson_pseudoscan)
 ```
+
+## 🎯 Test Full Functionality
+
+Once basic installation works, test the core features:
+
+```r
+# Load all required data
+data(zinc_hanson_pseudoscan)
+data(zinc_hanson_means)
+data(dm6.ncbiRefSeq.genes)
+data(dm6.variants)
+
+# Test peak detection and zooming
+out <- XQTL_zoom(zinc_hanson_pseudoscan, "chr3R", 18000000, 20000000, 3, 3)
+
+# View the zoomed region
+print(out$plot)
+
+# Test the main plotting function
+XQTL_5panel_plot(zinc_hanson_pseudoscan, zinc_hanson_means, 
+                 dm6.variants, dm6.ncbiRefSeq.genes, 
+                 out$chr, out$start, out$stop)
+```
+
+**Success indicators:**
+- ✅ Package loads without errors
+- ✅ Data loads successfully  
+- ✅ Zoom function works and shows a plot
+- ✅ 5-panel plot generates without errors
 
 ## Dependencies
 

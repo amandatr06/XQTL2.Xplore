@@ -63,6 +63,35 @@ data(dm6.variants)
 head(zinc_hanson_pseudoscan)
 ```
 
+## 🎯 Mini Demo: Zoom and Plot
+
+Test the core functionality with a mini demo:
+
+```r
+# Load the package and data
+library(XQTL2.Xplore)
+data(zinc_hanson_pseudoscan)
+data(zinc_hanson_means)
+data(dm6.ncbiRefSeq.genes)
+data(dm6.variants)
+
+# Find a peak in a genomic region
+out <- XQTL_zoom(zinc_hanson_pseudoscan, "chr3R", 18000000, 20000000, 3, 3)
+
+# View the zoomed region
+print(out$plot)
+
+# Create a publication-ready 5-panel plot
+XQTL_5panel_plot(zinc_hanson_pseudoscan, zinc_hanson_means, 
+                 dm6.variants, dm6.ncbiRefSeq.genes, 
+                 out$chr, out$start, out$stop)
+```
+
+This demo shows:
+- **Peak detection** with `XQTL_zoom()`
+- **Multi-panel visualization** with `XQTL_5panel_plot()`
+- **Real data processing** - no dummy examples
+
 ## 📚 Documentation
 
 - **[Package README](README.md)** - Complete package documentation
