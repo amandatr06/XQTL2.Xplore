@@ -3,11 +3,14 @@
 #' This function processes the GTF file to create a tidy genes object.
 #' Can be used to create package data or process user GTF files.
 #' 
+#' NOTE: This function is for data preparation only and requires Bioconductor packages.
+#' These are NOT required for using the XQTL2.Xplore package.
+#' 
 #' @param gtf_path Optional path to GTF file. If NULL, uses the default dm6.ncbiRefSeq.gtf
 #' @param save_as_package_data Logical, whether to save as package data (default: TRUE)
 #' @return The processed genes object (invisibly if save_as_package_data is TRUE)
 create_genes_object <- function(gtf_path = NULL, save_as_package_data = TRUE) {
-  # Load required libraries
+  # Load required libraries for data preparation only
   if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
   BiocManager::install(c("rtracklayer", "GenomicRanges"), update = FALSE)

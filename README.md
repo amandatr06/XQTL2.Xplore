@@ -13,17 +13,55 @@ XQTL2.Xplore provides comprehensive tools for:
 
 ## 🚀 Quick Installation
 
+### Method 1: Install from GitHub (Recommended)
 ```r
-# Install from GitHub with vignettes (important for RStudio users!)
-devtools::install_github("tdlong/XQTL2.Xplore", build_vignettes = TRUE)
+# Install remotes if not already installed
+if (!requireNamespace("remotes", quietly = TRUE)) {
+  install.packages("remotes")
+}
+
+# Install the package
+remotes::install_github("tdlong/XQTL2.Xplore")
 
 # Load and test
 library(XQTL2.Xplore)
-data(zinc_hanson_pseudoscan)
-XQTL_Manhattan_5panel(zinc_hanson_pseudoscan, cM = FALSE)
 ```
 
-**Note:** The `build_vignettes = TRUE` parameter is crucial for accessing the included tutorials in RStudio.
+### Method 2: Install from local source
+```r
+# Clone the repository first, then:
+# In R, set working directory to the package folder
+setwd("path/to/XQTL2.Xplore")
+
+# Install devtools if needed
+if (!requireNamespace("devtools", quietly = TRUE)) {
+  install.packages("devtools")
+}
+
+# Install the package
+devtools::install()
+```
+
+## ✅ Test Installation
+
+After installation, test that everything works:
+
+```r
+# Load the package
+library(XQTL2.Xplore)
+
+# Check available data
+data(package = "XQTL2.Xplore")
+
+# Load and examine example data
+data(zinc_hanson_pseudoscan)
+data(zinc_hanson_means)
+data(dm6.ncbiRefSeq.genes)
+data(dm6.variants)
+
+# Quick test - should work without errors
+head(zinc_hanson_pseudoscan)
+```
 
 ## 📚 Documentation
 
@@ -60,8 +98,9 @@ XQTL_5panel_plot(zinc_hanson_pseudoscan, zinc_hanson_means,
 
 ## 🔧 System Requirements
 
-- R version 4.0.0 or higher
-- Required packages: ggplot2, dplyr, tidyr, patchwork, vcfR
+- R version 3.5 or higher
+- **Minimal dependencies**: Only essential packages required
+- **Optional**: Bioconductor packages only needed for custom data preparation
 - RStudio (recommended) or R console
 
 ## 📄 License

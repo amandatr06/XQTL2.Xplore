@@ -1,156 +1,142 @@
 # Installation Guide for XQTL2.Xplore
 
-## Prerequisites
+## Quick Installation
 
-Before installing XQTL2.Xplore, make sure you have the following R packages installed:
-
-```r
-# Install required packages
-install.packages(c("devtools", "ggplot2", "dplyr", "tidyr", "patchwork", "tibble", "grid", "rlang"))
-
-# Install Bioconductor packages (if not already installed)
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("vcfR")
-```
-
-## Installation from GitHub
-
-### Method 1: Using devtools (Recommended for RStudio)
+For most users, the package can be installed directly from GitHub:
 
 ```r
-# Install from GitHub with vignettes (important for RStudio users!)
-devtools::install_github("tdlong/XQTL2.Xplore", build_vignettes = TRUE)
-
-# Load the package
-library(XQTL2.Xplore)
+# Install from GitHub
+if (!requireNamespace("remotes", quietly = TRUE)) {
+  install.packages("remotes")
+}
+remotes::install_github("tdlong/XQTL2.Xplore")
 ```
 
-**Note:** The `build_vignettes = TRUE` parameter is crucial for RStudio users to access the included tutorials.
+## Alternative Installation Methods
 
-### Method 2: Using remotes
-
+### Method 1: Using remotes (Recommended)
 ```r
-# Install remotes if not already installed
-if (!requireNamespace("remotes", quietly = TRUE))
-    install.packages("remotes")
-
-# Install from GitHub with vignettes
-remotes::install_github("tdlong/XQTL2.Xplore", build_vignettes = TRUE)
-
-# Load the package
-library(XQTL2.Xplore)
+if (!requireNamespace("remotes", quietly = TRUE)) {
+  install.packages("remotes")
+}
+remotes::install_github("tdlong/XQTL2.Xplore")
 ```
 
-### Method 3: Manual Installation
+### Method 2: Using devtools
+```r
+if (!requireNamespace("devtools", quietly = TRUE)) {
+  install.packages("devtools")
+}
+devtools::install_github("tdlong/XQTL2.Xplore")
+```
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/tdlong/XQTL2.Xplore.git
-   cd XQTL2.Xplore
-   ```
+### Method 3: Local installation
+```r
+# Clone the repository first, then:
+setwd("path/to/XQTL2.Xplore")
+if (!requireNamespace("devtools", quietly = TRUE)) {
+  install.packages("devtools")
+}
+devtools::install()
+```
 
-2. Install in R:
-   ```r
-   # Set working directory to the package folder
-   setwd("path/to/XQTL2.Xplore")
-   
-   # Install the package with vignettes
-   devtools::install(build_vignettes = TRUE)
-   
-   # Load the package
-   library(XQTL2.Xplore)
-   ```
+## Test Your Installation
 
-## Quick Start
-
-After installation, you can start using the package immediately:
+After installation, verify everything works:
 
 ```r
 # Load the package
 library(XQTL2.Xplore)
 
-# Load example datasets
+# Check what's available
+ls("package:XQTL2.Xplore")
+
+# Check available data
+data(package = "XQTL2.Xplore")
+
+# Load example data
 data(zinc_hanson_pseudoscan)
 data(zinc_hanson_means)
 
-# Create a Manhattan plot
-XQTL_Manhattan_5panel(zinc_hanson_pseudoscan, cM = FALSE)
+# Quick test - should work without errors
+head(zinc_hanson_pseudoscan)
+dim(zinc_hanson_pseudoscan)
 ```
 
-## Vignettes
+## Dependencies
 
-Access the included tutorials:
+### Required Dependencies (automatically installed)
+- **ggplot2** - For data visualization
+- **dplyr** - For data manipulation
+- **tidyr** - For data reshaping
+- **vcfR** - For VCF file processing
+- **patchwork** - For combining plots
+- **rlang** - For tidy evaluation
+- **tibble** - For modern data frames
+- **grid** - For plot layout utilities
+
+### Optional Dependencies (only if you need to create data objects)
+If you need to process your own GTF files or create new data objects, you'll also need:
 
 ```r
-# View available vignettes
-browseVignettes("XQTL2.Xplore")
-
-# Or load a specific vignette
-vignette("XQTL2_workflow", package = "XQTL2.Xplore")
-vignette("XQTL2_usage", package = "XQTL2.Xplore")
+# Install Bioconductor packages for data preparation
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+  install.packages("BiocManager")
+}
+BiocManager::install(c("rtracklayer", "GenomicRanges"))
 ```
+
+**Note**: These Bioconductor packages are NOT required for normal package usage.
 
 ## Troubleshooting
 
 ### Common Issues
 
-1. **Package dependencies not found**
-   ```r
-   # Install missing dependencies
-   install.packages(c("ggplot2", "dplyr", "tidyr", "patchwork"))
-   ```
+1. **Package not found**: Make sure you're using the correct repository URL
+2. **VCF file reading errors**: Make sure `vcfR` is properly installed
+3. **Plot combination issues**: Ensure `patchwork` is installed
+4. **Data manipulation errors**: Verify `dplyr` and `tidyr` are up to date
 
-2. **Bioconductor packages not available**
-   ```r
-   # Install BiocManager and required packages
-   if (!requireNamespace("BiocManager", quietly = TRUE))
-       install.packages("BiocManager")
-   BiocManager::install("vcfR")
-   ```
+### Installation Errors
 
-3. **GitHub installation fails**
-   - Make sure you have `devtools` or `remotes` installed
-   - Check your internet connection
-   - Verify the repository URL is correct
+If you get dependency errors:
 
-4. **Vignettes not loading**
-   ```r
-   # Reinstall with vignettes (this is the key fix!)
-   devtools::install_github("tdlong/XQTL2.Xplore", build_vignettes = TRUE)
-   ```
+```r
+# Update all packages first
+update.packages(ask = FALSE)
 
-### System Requirements
-
-- R version 4.0.0 or higher
-- RStudio (recommended) or R console
-- Internet connection for GitHub installation
-
-## Data Requirements
-
-The package includes example datasets, but for your own data, ensure it follows these formats:
-
-- **QTL scan data**: Columns `chr`, `pos`, `Wald_log10p`, and optionally `cM`
-- **Frequency data**: Columns `chr`, `pos`, `TRT`, `REP`, `founder`, `freq`
-- **Gene data**: Columns `chr`, `start`, `end`, `gene_name`, `strand`, `is_utr`
-- **Variant data**: Columns `CHROM`, `POS`, `type`, `subtype`, and genotype columns for each founder
-
-## Support
-
-If you encounter issues:
-
-1. Check the vignettes for usage examples
-2. Review the function documentation: `?XQTL_Manhattan_5panel`
-3. Check the GitHub repository for updates
-4. Open an issue on GitHub with a reproducible example
-
-## Citation
-
-If you use this package in your research, please cite:
-
+# Then try installation again
+remotes::install_github("tdlong/XQTL2.Xplore")
 ```
-XQTL2.Xplore: An R package for XQTL analysis and visualization
-Author: Tony Long
-Version: 0.0.0.9000
-URL: https://github.com/tdlong/XQTL2.Xplore
-``` 
+
+### Minimal Installation Test
+
+```r
+# Test basic functionality
+library(XQTL2.Xplore)
+data(dm6.ncbiRefSeq.genes)
+data(dm6.variants)
+
+# Should work without errors
+head(dm6.ncbiRefSeq.genes)
+head(dm6.variants)
+```
+
+## Development Installation
+
+For developers who want to modify the package:
+
+```r
+# Clone the repository
+git clone https://github.com/tdlong/XQTL2.Xplore.git
+cd XQTL2.Xplore
+
+# Install in development mode
+devtools::install()
+```
+
+## System Requirements
+
+- R version 3.5 or higher
+- Sufficient memory for large genomic datasets
+- Graphics device that supports ggplot2 

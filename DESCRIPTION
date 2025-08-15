@@ -15,20 +15,18 @@ Imports:
     ggplot2,
     dplyr,
     tidyr,
-    rtracklayer,
     vcfR,
-    readr,
-    bit,
-    bit64,
-    progress,
-    hms,
-    vroom,
-    tzdb,
-    patchwork
+    patchwork,
+    rlang,
+    tibble,
+    grid
 Suggests: 
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    rtracklayer,
+    GenomicRanges,
+    BiocManager
 Config/testthat/edition: 3
 VignetteBuilder: knitr 
 Depends: 
