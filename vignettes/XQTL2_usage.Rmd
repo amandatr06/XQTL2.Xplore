@@ -126,7 +126,76 @@ out = XQTL_zoom(zinc_hanson_pseudoscan, "chr3R", 13000000, 15000000, left_drop =
 out = XQTL_zoom(my_qtl_data, "chr3R", 13000000, 15000000, left_drop = 3, right_drop = 3)
 ```
 
-# Advanced Usage
+## Comprehensive Plotting Functions Showcase
+
+XQTL2.Xplore provides a wide range of visualization tools. Here's a comprehensive overview:
+
+### 1. Genome-wide Analysis
+```{r eval=FALSE}
+# 5-panel Manhattan plot (recommended for high-resolution analysis)
+XQTL_Manhattan_5panel(zinc_hanson_pseudoscan, cM = FALSE)
+
+# Traditional Manhattan plot with custom color schemes
+XQTL_Manhattan(zinc_hanson_pseudoscan, cM = FALSE, color_scheme = "UCI")
+XQTL_Manhattan(zinc_hanson_pseudoscan, cM = TRUE, color_scheme = "Stanford")
+```
+
+### 2. Regional Analysis
+```{r eval=FALSE}
+# QTL association in a specific region
+XQTL_region(zinc_hanson_pseudoscan, "chr3R", 18000000, 20000000, "Wald_log10p")
+
+# Frequency changes between treatment and control
+XQTL_change_average(zinc_hanson_means, "chr3R", 18000000, 20000000)
+XQTL_change_average(zinc_hanson_means, "chr3R", 18000000, 20000000, plotSelection = TRUE)
+
+# Frequency changes by replicate
+XQTL_change_byRep(zinc_hanson_means, "chr3R", 18000000, 20000000)
+```
+
+### 3. Gene and Variant Visualization
+```{r eval=FALSE}
+# Gene annotations in a region
+XQTL_genes(dm6.ncbiRefSeq.genes, "chr3R", 18000000, 20000000)
+
+# Variant analysis across founders
+XQTL_variantsByFounder(dm6.variants, "chr3R", 18000000, 20000000, zinc_hanson_means)
+
+# Structural variants by size
+XQTL_SVBySize(dm6.variants, "chr3R", 18000000, 20000000, zinc_hanson_means)
+```
+
+### 4. Publication-ready Multi-panel Plots
+```{r eval=FALSE}
+# Complete 5-panel visualization
+XQTL_5panel_plot(zinc_hanson_pseudoscan, zinc_hanson_means, 
+                 dm6.variants, dm6.ncbiRefSeq.genes, 
+                 "chr3R", 18000000, 20000000)
+
+# Custom multi-panel layouts using patchwork
+library(patchwork)
+A1 <- XQTL_region(zinc_hanson_pseudoscan, "chr3R", 18000000, 20000000, "Wald_log10p")
+A2 <- XQTL_change_average(zinc_hanson_means, "chr3R", 18000000, 20000000)
+A3 <- XQTL_genes(dm6.ncbiRefSeq.genes, "chr3R", 18000000, 20000000)
+A4 <- XQTL_variantsByFounder(dm6.variants, "chr3R", 18000000, 20000000, zinc_hanson_means)
+
+# Custom layout
+(A1 / A2) | (A3 / A4)
+```
+
+### 5. Peak Refinement and Analysis
+```{r eval=FALSE}
+# Find and refine peak boundaries
+out <- XQTL_zoom(zinc_hanson_pseudoscan, "chr3R", 18000000, 20000000, 3, 3)
+
+# View the refined peak
+print(out$plot)
+
+# Use refined boundaries for detailed analysis
+XQTL_5panel_plot(zinc_hanson_pseudoscan, zinc_hanson_means, 
+                 dm6.variants, dm6.ncbiRefSeq.genes, 
+                 out$chr, out$start, out$stop)
+```
 
 ## Customizing Plots
 

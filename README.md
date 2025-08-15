@@ -63,9 +63,9 @@ data(dm6.variants)
 head(zinc_hanson_pseudoscan)
 ```
 
-## 🎯 Mini Demo: Zoom and Plot
+## 🎯 Quick Demo
 
-Test the core functionality with a mini demo:
+Test the core functionality:
 
 ```r
 # Load the package and data
@@ -87,16 +87,39 @@ XQTL_5panel_plot(zinc_hanson_pseudoscan, zinc_hanson_means,
                  out$chr, out$start, out$stop)
 ```
 
-This demo shows:
-- **Peak detection** with `XQTL_zoom()`
-- **Multi-panel visualization** with `XQTL_5panel_plot()`
-- **Real data processing** - no dummy examples
+## 📚 Documentation & Learning
 
-## 📚 Documentation
+### Vignettes (Interactive Tutorials)
+```r
+# View available vignettes
+browseVignettes("XQTL2.Xplore")
 
-- **[Package README](README.md)** - Complete package documentation
-- **[Installation Guide](INSTALL.md)** - Detailed installation instructions
-- **[Vignettes](vignettes/)** - Tutorials and examples
+# Load specific vignettes
+vignette("XQTL2_workflow", package = "XQTL2.Xplore")
+vignette("XQTL2_usage", package = "XQTL2.Xplore")
+```
+
+### What You'll Learn in the Vignettes:
+
+**📖 XQTL2_workflow**: Complete analysis workflow from genome-wide exploration to detailed peak analysis
+- Step-by-step QTL analysis process
+- Peak refinement techniques
+- Publication-ready multi-panel plots
+- Real data examples throughout
+
+**📖 XQTL2_usage**: Comprehensive function reference with examples
+- All plotting functions demonstrated
+- Data format requirements
+- Customization options
+- Advanced usage patterns
+
+### Key Functions Demonstrated in Vignettes:
+- **`XQTL_Manhattan_5panel()`** - Genome-wide QTL visualization
+- **`XQTL_zoom()`** - Peak detection and regional analysis
+- **`XQTL_5panel_plot()`** - Publication-ready multi-panel plots
+- **`XQTL_genes()`** - Gene annotation visualization
+- **`XQTL_variantsByFounder()`** - Variant analysis across founders
+- **`XQTL_change_average()`** - Frequency change analysis
 
 ## 🎯 Key Features
 
@@ -105,25 +128,6 @@ This demo shows:
 - **Publication-ready plots** with customizable themes
 - **Efficient data processing** for large genomic datasets
 - **Multiple visualization options** for different analysis stages
-
-## 📖 Usage Examples
-
-```r
-# Load example data
-data(zinc_hanson_pseudoscan)
-data(zinc_hanson_means)
-
-# Genome-wide analysis
-XQTL_Manhattan_5panel(zinc_hanson_pseudoscan, cM = FALSE)
-
-# Peak refinement
-out <- XQTL_zoom(zinc_hanson_pseudoscan, "chr3R", 18000000, 20000000, 3, 3)
-
-# Publication-ready plot
-XQTL_5panel_plot(zinc_hanson_pseudoscan, zinc_hanson_means, 
-                 dm6.variants, dm6.ncbiRefSeq.genes, 
-                 out$chr, out$start, out$stop)
-```
 
 ## 🔧 System Requirements
 
