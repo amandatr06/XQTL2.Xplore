@@ -2,7 +2,7 @@
 
 This repository contains the XQTL2.Xplore R package for XQTL (Experimental Quantitative Trait Locus) analysis and visualization.
 
-## 📦 Package Overview
+## Package Overview
 
 XQTL2.Xplore provides comprehensive tools for:
 - **Genome-wide QTL visualization** with Manhattan plots
@@ -11,7 +11,7 @@ XQTL2.Xplore provides comprehensive tools for:
 - **Gene and variant annotation** visualization
 - **Publication-ready multi-panel plots**
 
-## 🚀 Quick Installation
+## Quick Installation
 
 ### Method 1: Install from GitHub (Recommended)
 ```r
@@ -42,7 +42,7 @@ if (!requireNamespace("devtools", quietly = TRUE)) {
 devtools::install()
 ```
 
-## ✅ Test Installation
+## Test Installation
 
 After installation, test that everything works:
 
@@ -63,9 +63,13 @@ data(dm6.variants)
 head(zinc_hanson_pseudoscan)
 ```
 
-## 🎯 Quick Demo
+## Demo
 
-Test the core functionality:
+**Quick Context:** [Example study](https://academic.oup.com/genetics/article/231/3/iyaf173/8239421)
+
+X-QTL mapping of multiparental Drosophila population to identify genomic loci associated with zinc toxicity resistance. This identified 10 genes with significant genotype-by-treatment effects, including pHCl-2, which encodes a zinc sensor protein. This provides a pathway to a broader understanding of the biological impact of metal toxicity.
+
+**Test the core functionality:**
 
 ```r
 # Load the package and data
@@ -86,28 +90,43 @@ XQTL_5panel_plot(zinc_hanson_pseudoscan, zinc_hanson_means,
                  dm6.variants, dm6.ncbiRefSeq.genes, 
                  out$chr, out$start, out$stop)
 ```
+**Expected output:**
 
-## 📚 Documentation & Learning
+<img src="img/sample_data1.png"> # need to create image folder!!!
+
+**Description:**
+1. **Top panel (Wald_log10p):** This is the QTL signal strength. The black line (peaking around 32 on the –log10 p-value scale) shows an exceptionally strong statistical signal of association with zinc resistance in this region.
+
+2. **Second panel (Frequency(Z-C):** Haplotypes above zero (black line - A7) have higher zinc resistance while those below zero (green line - A3) have a lower zinc resistance.
+
+3. **Third panel (Gene tracks):** Blue rectangles indicate exons from 5' to 3' and orange 3' to 5'. These are candidate genes located under the QTL peak that could be potential contributors to zinc resistance.
+
+4. **Last panel (Founders and Genomic Position):** These display differences in each of the 8 founder lines (A1–AB8). Each row corresponds to one founder, and the triangles/symbols indicate structural variants (SV) type and location:
+    - Upward triangles = deletions (DEL), insertions (INS), etc.
+    - Red filled symbols = mobile element insertions (DEL:rME, INS:ME)
+    - The large red arrow near 18.930–18.940 Mb (labeled E and F) is a particularly large or notable SV in founders A5/A7/AB8
+
+## Documentation & Learning
 
 ### Vignettes (Interactive Tutorials)
+
 ```r
-# View available vignettes
-browseVignettes("XQTL2.Xplore")
+# setwd("path to where XQTL2.Xplore is located on your device") 
 
 # Load specific vignettes
-vignette("XQTL2_workflow", package = "XQTL2.Xplore")
-vignette("XQTL2_usage", package = "XQTL2.Xplore")
+file.edit("XQTL2.Xplore/vignettes/XQTL2_workflow.Rmd")
+file.edit("XQTL2.Xplore/vignettes/XQTL2_usage.Rmd")
 ```
 
 ### What You'll Learn in the Vignettes:
 
-**📖 XQTL2_workflow**: Complete analysis workflow from genome-wide exploration to detailed peak analysis
+** XQTL2_workflow**: Complete analysis workflow from genome-wide exploration to detailed peak analysis
 - Step-by-step QTL analysis process
 - Peak refinement techniques
 - Publication-ready multi-panel plots
 - Real data examples throughout
 
-**📖 XQTL2_usage**: Comprehensive function reference with examples
+** XQTL2_usage**: Comprehensive function reference with examples
 - All plotting functions demonstrated
 - Data format requirements
 - Customization options
@@ -121,7 +140,7 @@ vignette("XQTL2_usage", package = "XQTL2.Xplore")
 - **`XQTL_variantsByFounder()`** - Variant analysis across founders
 - **`XQTL_change_average()`** - Frequency change analysis
 
-## 🎯 Key Features
+## Key Features
 
 - **Example datasets** included for immediate use
 - **Comprehensive vignettes** with complete workflows
@@ -129,28 +148,28 @@ vignette("XQTL2_usage", package = "XQTL2.Xplore")
 - **Efficient data processing** for large genomic datasets
 - **Multiple visualization options** for different analysis stages
 
-## 🔧 System Requirements
+## System Requirements
 
 - R version 3.5 or higher
 - **Minimal dependencies**: Only essential packages required
 - **Optional**: Bioconductor packages only needed for custom data preparation
 - RStudio (recommended) or R console
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📞 Support
+## Support
 
 - Check the [vignettes](vignettes/) for usage examples
 - Review the [installation guide](INSTALL.md) for troubleshooting
 - Open an issue on GitHub for bug reports or feature requests
 
-## 📊 Citation
+## Citation
 
 If you use this package in your research, please cite:
 
