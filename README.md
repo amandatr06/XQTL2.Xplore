@@ -98,7 +98,7 @@ XQTL_5panel_plot(df1, df2, dm6_variants, dm6_genes,
 ```
 **Expected output:**
 
-<img src="img/sample_data1.png"> # need to create image folder!!!
+<img src="img/sample_data1.png">
 
 **Description:**
 1. **Top panel (Wald_log10p):**
