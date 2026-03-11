@@ -157,6 +157,14 @@ Step 4: Detailed Regional Analysis
 
 <img src="img/workflow_graph4.png">
 
+Step 5: Publication-ready Multi-panel Plot
+
+<img src="img/workflow_graph5.png">
+
+Step 6: Exploring Additional Peaks
+
+<img src="img/workflow_graph6.png">
+
 ** XQTL2_usage**: Comprehensive function reference with examples
 - All plotting functions demonstrated
 - Data format requirements
