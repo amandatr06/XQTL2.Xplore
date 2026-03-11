@@ -133,11 +133,29 @@ file.edit("XQTL2.Xplore/vignettes/XQTL2_usage.Rmd")
 
 ### What You'll Learn in the Vignettes:
 
-** XQTL2_workflow**: Complete analysis workflow from genome-wide exploration to detailed peak analysis
+** XQTL2_workflow **: Complete analysis workflow from genome-wide exploration to detailed peak analysis
 - Step-by-step QTL analysis process
 - Peak refinement techniques
 - Publication-ready multi-panel plots
 - Real data examples throughout
+
+Expected Outputs:
+
+Step 1: Genome-wide Visualization
+
+<img src="img/workflow_graph1.png">
+
+Step 2: Frequency Change Analysis
+
+<img src="img/workflow_graph2.png">
+
+Step 3: Peak Refinement with XQTL_zoom
+
+<img src="img/workflow_graph3.png">
+
+Step 4: Detailed Regional Analysis
+
+<img src="img/workflow_graph4.png">
 
 ** XQTL2_usage**: Comprehensive function reference with examples
 - All plotting functions demonstrated
