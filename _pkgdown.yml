@@ -1,4 +1,18 @@
 url: https://amandatr06.github.io/XQTL2.Xplore/
+
+navbar:
+  structure:
+    left: [home, intro, reference, articles, tutorials, news]
+    right: [github]
+  type: light
+
 template:
+  params:
+    ganalytics: UA-119440867-9
   bootstrap: 5
+  bootswatch: spacelab
+
+
+development:
+  mode: auto
 
