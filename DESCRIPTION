@@ -1,4 +1,5 @@
 Package: XQTL2.Xplore
+Type: Package
 Title: Visualization Tools for XQTL Analysis
 Version: 0.0.0.9000
 Authors@R: 
@@ -32,3 +33,4 @@ VignetteBuilder: knitr
 Depends: 
     R (>= 3.5)
 LazyData: true
+URL: https://amandatr06.github.io/XQTL2.Xplore/
