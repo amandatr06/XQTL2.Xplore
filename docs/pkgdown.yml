@@ -1,0 +1,7 @@
+pandoc: 3.6.3
+pkgdown: 2.2.0
+pkgdown_sha: ~
+articles:
+  XQTL2_usage: XQTL2_usage.html
+  XQTL2_workflow: XQTL2_workflow.html
+last_built: 2026-03-12T03:08Z
