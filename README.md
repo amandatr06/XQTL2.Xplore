@@ -98,9 +98,10 @@ XQTL_5panel_plot(df1, df2, dm6_variants, dm6_genes,
 ```
 **Expected output:**
 
-<img src="img/sample_data1.png">
+<img src="man/figures/demo_graph1.png">
 
 **Description:**
+
 1. **Top panel (Wald_log10p):**
 - This is a line graph showing how statistically significant the genetic association is at each position along a genomic region. The y-axis shows the Wald -log10(p-value), which tests for no difference between founder allele frequencies at each position — larger values (values above 10) mean stronger evidence for a QTL at that location.
 - In this study, the signal peaks around 32 near 18.935 Mb, an exceptionally strong result indicating high-confidence evidence for a zinc resistance QTL in this region.
@@ -124,7 +125,8 @@ XQTL_5panel_plot(df1, df2, dm6_variants, dm6_genes,
 ### Vignettes (Interactive Tutorials)
 
 ```r
-# setwd("path to where XQTL2.Xplore is located on your device") 
+# Set working directory to where XQTL2.Xplore is located on your device
+# Example: setwd("User/Long Lab") 
 
 # Load specific vignettes
 file.edit("XQTL2.Xplore/vignettes/XQTL2_workflow.Rmd")
@@ -133,7 +135,7 @@ file.edit("XQTL2.Xplore/vignettes/XQTL2_usage.Rmd")
 
 ### What You'll Learn in the Vignettes:
 
-** XQTL2_workflow **: Complete analysis workflow from genome-wide exploration to detailed peak analysis
+** XQTL2_workflow**: Complete analysis workflow from genome-wide exploration to detailed peak analysis
 - Step-by-step QTL analysis process
 - Peak refinement techniques
 - Publication-ready multi-panel plots
