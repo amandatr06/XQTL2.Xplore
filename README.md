@@ -5,11 +5,12 @@
 This repository contains the XQTL2.Xplore R package for XQTL (Experimental Quantitative Trait Locus) analysis and visualization.
 
 XQTL2.Xplore provides comprehensive tools for:
--   *Genome-wide QTL visualization with Manhattan plots*
--   *Regional analysis with peak refinement tools*
--   *Frequency change analysis across experimental conditions*
--   *Gene and variant annotation visualization*
--   *Publication-ready multi-panel plots*
+
+-   **Genome-wide QTL visualization** with Manhattan plots
+-   **Regional analysis** with peak refinement tools
+-   **Frequency change analysis** across experimental conditions
+-   **Gene and variant annotation** visualization
+-   **Publication-ready multi-panel plots**
 
 ## System Requirements
 
